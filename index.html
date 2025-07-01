@@ -15,6 +15,23 @@
         .section-hidden {
             display: none;
         }
+        /* Style for the new brand text */
+        .snippy-brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        .main-name {
+            font-weight: 700;
+            font-size: 22px; /* Slightly larger for the website header */
+            color: #0f172a; /* text-slate-900 */
+        }
+        .sub-name {
+            font-weight: 400;
+            font-size: 12px;
+            color: #475569; /* text-slate-600 */
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -25,16 +42,19 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="#" class="flex items-center gap-2" onclick="showPage('home')">
-                        <img class="h-10 w-auto" src="https://raw.githubusercontent.com/ganttr/public-assets/main/snippy-logo.svg" alt="Snippy Logo">
-                        <span class="text-2xl font-bold text-slate-900">Snippy</span>
+                    <a href="#" class="flex items-center gap-2" onclick="showPage('home'); return false;">
+                        <img class="h-10 w-auto" src="snippy-logo.svg" alt="Snippy Logo">
+                        <div class="snippy-brand-text">
+                            <span class="main-name">Snippy</span>
+                            <span class="sub-name">for Quickbase</span>
+                        </div>
                     </a>
                 </div>
 
                 <!-- Navigation -->
                 <nav class="hidden md:flex md:space-x-8">
-                    <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors">Features</a>
-                    <a href="#" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy')">Privacy Policy</a>
+                    <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('home')">Features</a>
+                    <a href="#" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
                 </nav>
 
                 <!-- CTA Button -->
@@ -184,7 +204,7 @@
         <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
             <p>&copy; 2024 Snippy for Quickbase. All Rights Reserved.</p>
             <p class="mt-2">
-                <a href="#" class="hover:text-blue-600" onclick="showPage('privacy')">Privacy Policy</a>
+                <a href="#" class="hover:text-blue-600" onclick="showPage('privacy'); return false;">Privacy Policy</a>
             </p>
         </div>
     </footer>
