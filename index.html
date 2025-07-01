@@ -15,7 +15,6 @@
         .section-hidden {
             display: none;
         }
-        /* Style for the new brand text */
         .snippy-brand-text {
             display: flex;
             flex-direction: column;
@@ -23,14 +22,30 @@
         }
         .main-name {
             font-weight: 700;
-            font-size: 22px; /* Slightly larger for the website header */
-            color: #0f172a; /* text-slate-900 */
+            font-size: 22px;
+            color: #0f172a;
         }
         .sub-name {
             font-weight: 400;
             font-size: 12px;
-            color: #475569; /* text-slate-600 */
+            color: #475569;
             opacity: 0.9;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1.5rem;
+        }
+        .faq-question.active + .faq-answer {
+            max-height: 500px; /* Adjust as needed */
+            padding: 1.5rem;
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        .faq-question.active .faq-arrow {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -54,6 +69,7 @@
                 <!-- Navigation -->
                 <nav class="hidden md:flex md:space-x-8">
                     <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('home')">Features</a>
+                    <a href="#faq" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('faq'); return false;">FAQ</a>
                     <a href="#privacy" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
                     <a href="#tos" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('tos'); return false;">Terms of Service</a>
                 </nav>
@@ -72,8 +88,8 @@
     <main>
         <!-- Home Page Section -->
         <div id="page-home">
-            <!-- Hero Section -->
-            <section class="py-20 sm:py-28">
+            <!-- Hero Section, Features, Donation Sections... (content omitted for brevity) -->
+             <section class="py-20 sm:py-28">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
                         The Quickbase editor you've always wanted.
@@ -91,8 +107,6 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Features Section -->
             <section id="features" class="py-20 sm:py-28 bg-white">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center">
@@ -102,69 +116,167 @@
                         </p>
                     </div>
                     <div class="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Syntax Highlighting</h3>
-                            <p class="mt-2 text-slate-600">Instantly readable formulas and code with beautiful, language-aware color themes (light and dark modes included).</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Auto-Formatting</h3>
-                            <p class="mt-2 text-slate-600">Clean up messy code with a single click. The "Beautify" button intelligently indents and formats your formulas and HTML.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Live Validation</h3>
-                            <p class="mt-2 text-slate-600">See formula errors and warnings in real-time as you type, directly in the editor gutter, just like a modern IDE.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Google Drive Backup</h3>
-                            <p class="mt-2 text-slate-600">Automatically save a versioned backup of your code to your own Google Drive every time you save, so you never lose your work.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Field & Function Helpers</h3>
-                            <p class="mt-2 text-slate-600">Quickly search and insert from a complete, dynamically updated list of all available fields and functions in your table.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Modern Editor Experience</h3>
-                            <p class="mt-2 text-slate-600">Enjoy a full-featured CodeMirror editor with line numbers, bracket matching, and a clean, modern interface.</p>
-                        </div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Syntax Highlighting</h3><p class="mt-2 text-slate-600">Instantly readable formulas and code with beautiful, language-aware color themes (light and dark modes included).</p></div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Auto-Formatting</h3><p class="mt-2 text-slate-600">Clean up messy code with a single click. The "Beautify" button intelligently indents and formats your formulas and HTML.</p></div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Live Validation</h3><p class="mt-2 text-slate-600">See formula errors and warnings in real-time as you type, directly in the editor gutter, just like a modern IDE.</p></div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Google Drive Backup</h3><p class="mt-2 text-slate-600">Automatically save a versioned backup of your code to your own Google Drive every time you save, so you never lose your work.</p></div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Field & Function Helpers</h3><p class="mt-2 text-slate-600">Quickly search and insert from a complete, dynamically updated list of all available fields and functions in your table.</p></div>
+                        <div class="p-6 bg-slate-50 rounded-lg"><h3 class="text-lg font-bold text-slate-900">Modern Editor Experience</h3><p class="mt-2 text-slate-600">Enjoy a full-featured CodeMirror editor with line numbers, bracket matching, and a clean, modern interface.</p></div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Donation Section -->
             <section id="donate" class="py-20 sm:py-28">
                 <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
                     <h2 class="text-3xl font-extrabold text-slate-900">Like Snippy?</h2>
-                    <p class="mt-4 text-lg text-slate-600">
-                        This tool is developed and maintained by a solo developer. If you find it useful, please consider supporting its future development. Your contribution helps cover costs and fuels new features!
-                    </p>
-                    <div class="mt-8">
-                        <a href="#" id="donate-link" class="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-pink-600 hover:bg-pink-700">
-                            💖 Support Snippy
-                        </a>
-                    </div>
+                    <p class="mt-4 text-lg text-slate-600">This tool is developed and maintained by a solo developer. If you find it useful, please consider supporting its future development. Your contribution helps cover costs and fuels new features!</p>
+                    <div class="mt-8"><a href="#" id="donate-link" class="inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-pink-600 hover:bg-pink-700">💖 Support Snippy</a></div>
                 </div>
             </section>
         </div>
 
+        <!-- FAQ Page Section -->
+        <div id="page-faq" class="section-hidden">
+            <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="text-4xl font-extrabold text-slate-900">Frequently Asked (and Occasionally Eye-Rolling) Questions</h1>
+                </div>
+                <div class="mt-12 space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">“Snippy should have more themes.”</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>That’s not a question. That’s a sentence with attitude.</p>
+                            <p class="mt-2">But hey — noted. Snippy launches with a couple of light and dark options to avoid theme sprawl and ensure bracket highlighting doesn’t get lost in a sea of aesthetic indecision. More may come. Or you could suggest one, and if it doesn’t make me want to gouge out my retinas, we’ll talk.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Does Snippy actually do anything, or is it just a CodeMirror wrapper with delusions of grandeur?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Snippy enhances the default Quickbase formula/code editors with syntax highlighting, beautification (via js-beautify), versioned Google Drive saves (manual only — because autosave without undo is the devil), and a control panel that doesn't scream “corporate compromise.”</p>
+                             <p class="mt-2">So yes, it does things. Important things. Beautiful things. Snarky things.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Why does Snippy ask me to donate?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Because Snippy integrates with Google Drive, and Google charges for API usage at scale. Donations help cover that — and keep the extension free for everyone. If you’re philosophically opposed to giving money to projects that improve your life, you can move on. We’ll still let you use Snippy. But your Quickbase app might mysteriously vanish. (Kidding. Probably.)</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Is Snippy officially affiliated with Quickbase?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>No. Snippy is an independent project built by someone who loves Quickbase, is endlessly annoyed by its limitations, and decided to fix a few of them without permission.</p>
+                            <p class="mt-2">Think of Snippy as Quickbase’s chaotic neutral twin. We’re not sponsored. We’re not sanctioned. We’re just better dressed.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 5 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Can Snippy break my Quickbase formulas?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Only if you try really, really hard.</p>
+                            <p class="mt-2">Snippy preserves Quickbase’s native error checking by not replacing the textarea — it just wraps it in a better UI.</p>
+                            <p class="mt-2">Still, if you manage to break something and can reproduce it without black magic or cursed CSVs, we want to know.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 6 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Where does Snippy store my code?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Short version: Locally. And optionally in your Google Drive — only if you enable it.</p>
+                            <p class="mt-2">Snippy doesn’t touch your Quickbase app data. It’s not slurping up your secrets or emailing your boss about those six nested If() statements ... though that might be a good idea for a future enhancement.</p>
+                            <p class="mt-2">We have a privacy policy. It’s not written in legalese. You can read it without crying.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 7 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">I pasted in a mess and nothing happened. Where’s the beautify button?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Right there. If you don’t see it, the universe is punishing you for your crimes against indentation. Reload and repent.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 8 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">Is Snippy open source?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Not yet. But we’re considering it — with limits. Because giving the world a gift doesn’t mean handing over the keys to your apartment and your espresso machine.</p>
+                            <p class="mt-2">Stay tuned.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 9 -->
+                    <div class="bg-white rounded-lg shadow-sm">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="text-lg font-bold text-slate-800">I have feedback! Where do I send it?</span>
+                            <span class="faq-arrow text-slate-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer text-slate-600">
+                            <p>Ah, the most helpful kind of message: unfiltered opinions delivered with urgency and no context.</p>
+                            <p class="mt-2">Seriously though — we welcome feedback, from some people. There’s a feedback button in the control panel (but only for donors, so if you don't see it, that really raises more questions about you than us, doesn't it?) Constructive feedback gets prioritized. Rants get archived under “performance art.”</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Privacy Policy Page Section -->
         <div id="page-privacy" class="section-hidden">
-            <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+             <div class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
                 <div class="prose prose-lg text-slate-600 mx-auto">
                     <h1 class="text-4xl font-extrabold text-slate-900">Privacy Policy for Snippy</h1>
                     <p class="lead">Last Updated: July 1, 2025</p>
-                    
                     <p>This Privacy Policy explains how Snippy for Quickbase ("we," "us," or "our") handles your information when you use our Chrome extension (the "Service"). Your privacy and data security are our top priorities.</p>
-                    
                     <h2>Information We Do NOT Collect or Store</h2>
                     <p>We want to be crystal clear about what we don't do. Snippy is designed to be a client-side tool that enhances your Quickbase experience without compromising your data.</p>
                     <ul>
                         <li><strong>Your Code and Formulas:</strong> Snippy does NOT save, store, transmit, or log any of the code or formulas you write. Your work is processed in your browser and sent directly back to your Quickbase page or, with your explicit action, to your own Google Drive account. It never touches our servers.</li>
                         <li><strong>Your Quickbase Data:</strong> Snippy does not read, access, or store any of the data within your Quickbase applications or tables.</li>
                     </ul>
-
                     <h2>Information We Collect and How We Use It</h2>
                     <p>We collect the absolute minimum information necessary for the extension to function and to verify donor support.</p>
-                    
                     <h3>1. Google Drive Integration (Optional)</h3>
                     <p>If you choose to use the "Save to Google Drive" feature, you will be asked to grant the extension permission to access your Google Drive.</p>
                     <ul>
@@ -172,27 +284,22 @@
                         <li><strong>What this allows:</strong> This is a restricted permission that allows Snippy to create a new folder named "Snippy for Quickbase" in your Google Drive and to create, read, and update files **only within that specific folder**.</li>
                         <li><strong>What this does NOT allow:</strong> The extension **cannot** see, read, or access any other files or folders in your Google Drive. Its access is strictly limited to the folder it creates for its own use.</li>
                     </ul>
-
                     <h3>2. Donation Verification (Optional)</h3>
                     <p>If you choose to support Snippy through a donation, we need a way to verify your status to unlock donor-only features.</p>
                     <ul>
                         <li><strong>Information Collected:</strong> We will store the email address you use during the donation process.</li>
                         <li><strong>How it's used:</strong> This email address is used solely to verify your donation status when you enter it into the extension. It will not be used for marketing, sold, or shared with any third parties.</li>
                     </ul>
-
                     <h3>3. Feedback and Suggestions (Optional, Donors-Only)</h3>
                     <p>If you are a verified donor and choose to submit feedback or feature suggestions through the extension:</p>
                     <ul>
                         <li><strong>Information Collected:</strong> We collect the content of your message.</li>
                         <li><strong>How it's used:</strong> This information is used exclusively to improve the Snippy extension.</li>
                     </ul>
-                    
                     <h2>Data Security</h2>
                     <p>All data transmitted between the extension and our verification services (for donations) is encrypted using industry-standard TLS (HTTPS). We take reasonable measures to protect the minimal information we store.</p>
-
                     <h2>Changes to This Privacy Policy</h2>
                     <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
-
                     <h2>Contact Us</h2>
                     <p>If you have any questions about this Privacy Policy, please contact us at privacy@snippyforquickbase.com.</p>
                 </div>
@@ -205,21 +312,15 @@
                 <div class="prose prose-lg text-slate-600 mx-auto">
                     <h1 class="text-4xl font-extrabold text-slate-900">Terms of Service for Snippy</h1>
                     <p class="lead">Last Updated: July 1, 2025</p>
-                    
                     <p>By using the Snippy for Quickbase Chrome extension (the "Service"), you are agreeing to be bound by the following terms and conditions ("Terms of Service").</p>
-                    
                     <h2>1. Use of the Service</h2>
                     <p>The Service is provided "as is" and "as available" without any warranty or condition, express, implied or statutory. We do not warrant that the service will be uninterrupted, timely, secure, or error-free.</p>
-
                     <h2>2. Disclaimer of Warranties</h2>
                     <p>Your use of the Service is at your sole risk. We expressly disclaim all warranties of any kind, whether express or implied, including, but not limited to, the implied warranties of merchantability, fitness for a particular purpose and non-infringement.</p>
-
                     <h2>3. Limitation of Liability</h2>
                     <p>You expressly understand and agree that the developer of Snippy shall not be liable for any direct, indirect, incidental, special, consequential or exemplary damages, including but not limited to, damages for loss of profits, goodwill, use, data or other intangible losses (even if we have been advised of the possibility of such damages), resulting from the use or the inability to use the service.</p>
-
                     <h2>4. Modifications to the Service</h2>
                     <p>We reserve the right at any time to modify or discontinue, temporarily or permanently, the Service (or any part thereof) with or without notice.</p>
-
                     <h2>5. Contact Us</h2>
                     <p>If you have any questions about these Terms of Service, please contact us at privacy@snippyforquickbase.com.</p>
                 </div>
@@ -232,6 +333,8 @@
         <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
             <p>&copy; 2024 Snippy for Quickbase. All Rights Reserved.</p>
             <p class="mt-2">
+                <a href="#faq" class="hover:text-blue-600" onclick="showPage('faq'); return false;">FAQ</a>
+                <span class="mx-2">|</span>
                 <a href="#privacy" class="hover:text-blue-600" onclick="showPage('privacy'); return false;">Privacy Policy</a>
                 <span class="mx-2">|</span>
                 <a href="#tos" class="hover:text-blue-600" onclick="showPage('tos'); return false;">Terms of Service</a>
@@ -244,30 +347,52 @@
             document.getElementById('page-home').classList.add('section-hidden');
             document.getElementById('page-privacy').classList.add('section-hidden');
             document.getElementById('page-tos').classList.add('section-hidden');
+            document.getElementById('page-faq').classList.add('section-hidden');
             
             document.getElementById('page-' + pageId).classList.remove('section-hidden');
             window.scrollTo(0, 0);
 
-            // Update URL hash without reloading
-            if (history.pushState) {
-                history.pushState(null, null, '#' + pageId);
-            } else {
-                location.hash = '#' + pageId;
-            }
-            if (pageId === 'home') {
-                 if (history.pushState) {
-                    history.pushState(null, null, window.location.pathname + window.location.search);
+            // Safely update URL hash
+            try {
+                if (pageId !== 'home') {
+                    if (history.pushState) {
+                        history.pushState(null, null, '#' + pageId);
+                    } else {
+                        location.hash = '#' + pageId;
+                    }
                 } else {
-                    location.hash = '';
+                    if (history.pushState) {
+                        history.pushState(null, null, window.location.pathname + window.location.search);
+                    } else {
+                        location.hash = '';
+                    }
                 }
+            } catch (e) {
+                // In a sandboxed environment, just log the error and continue.
+                console.warn("Could not update URL hash:", e.message);
             }
         }
 
-        // On page load, check for a hash and show the correct section
         document.addEventListener('DOMContentLoaded', function() {
+            // Accordion logic
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(button => {
+                button.addEventListener('click', () => {
+                    const wasActive = button.classList.contains('active');
+                    // Optional: Close all other accordions
+                    // faqQuestions.forEach(b => b.classList.remove('active'));
+                    if (!wasActive) {
+                        button.classList.add('active');
+                    } else {
+                         button.classList.remove('active');
+                    }
+                });
+            });
+
+            // Page load logic
             if (window.location.hash) {
                 var pageId = window.location.hash.substring(1);
-                if (pageId === 'privacy' || pageId === 'tos') {
+                if (['privacy', 'tos', 'faq'].includes(pageId)) {
                     showPage(pageId);
                 }
             }
