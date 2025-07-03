@@ -71,29 +71,30 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0">
-                    <a href="#" class="flex items-center gap-2" onclick="showPage('home'); return false;">
-                        <img class="h-10 w-auto" src="snippy-logo.svg" alt="Snippy Logo">
-                        <div class="snippy-brand-text">
-                            <span class="main-name">Snippy</span>
-                            <span class="sub-name">for Quickbase</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Navigation -->
-                <nav class="hidden md:flex md:space-x-8">
-                    <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('home')">Features</a>
-                    <a href="#demo" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('home')">Demo</a>
-                    <a href="#faq" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('faq'); return false;">FAQ</a>
-                    <a href="#privacy" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
-                    <a href="#tos" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('tos'); return false;">Terms of Service</a>
-                </nav>
+  <!-- Header with Navigation -->
+  <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex-shrink-0">
+          <a href="#" class="flex items-center gap-2" onclick="showPage('home'); return false;">
+            <img class="h-10 w-auto" src="snippy-logo.svg" alt="Snippy Logo">
+            <div class="snippy-brand-text">
+              <span class="main-name">Snippy</span>
+              <span class="sub-name">for Quickbase</span>
+            </div>
+          </a>
+        </div>
+        <nav class="hidden md:flex md:space-x-8">
+          <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('features')">Features</a>
+          <a href="#demo" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('demo')">Demo</a>
+          <a href="#faq" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('faq'); return false;">FAQ</a>
+          <a href="#team" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('team'); return false;">Meet the Team</a>
+          <a href="#privacy" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
+          <a href="#tos" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('tos'); return false;">Terms of Service</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
                 <!-- CTA Button -->
                 <div class="flex items-center">
@@ -178,29 +179,29 @@
                 </div>
             </section>
         </div>
-<section id="team" class="py-20 sm:py-28 bg-white">
-  <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-    <img src="/gene-bixler.jpg" alt="Gene Bixler looking amused and dangerous"
-         class="mx-auto rounded-full w-48 h-48 object-cover shadow-lg mb-4 border-4 border-slate-200">
-    <p class="text-sm text-slate-500 italic">"A smile. A plan. And an unsubmitted support ticket."</p>
-   <p class="mt-4 text-slate-600">
-      There’s no dev team. No VC funding. Just one person, one browser, and a deep personal vendetta against bad indentation.
-    </p>
-      
-      <h2 class="mt-6 text-3xl font-extrabold text-slate-900">Gene Bixler</h2>
-    <p class="mt-4 text-lg text-slate-600">
-      Quickbase Developer since 2013. Has worked for Quickbase, Quickbase partners, and Quickbase customers —
-      which is basically like seeing the Matrix from all three angles. Built mission-critical apps, untangled legacy horrors,
-      and survived more formula fields than any human should.
-    </p>
-    <p class="mt-4 text-slate-600">
-      Gene created Snippy because Quickbase's editor was giving him rage-induced carpal tunnel.
-      When he’s not building clean interfaces or fixing problems Quickbase never will, he’s probably talking to an AI,
-      reformatting other people’s code, or quietly judging nested <code>If()</code> statements.
-    </p>
-    
+<div id="page-team" class="section-hidden">
+    <section class="py-20 sm:py-28 bg-white">
+      <div class="max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <img src="/gene-bixler.jpg" alt="Gene Bixler looking amused and dangerous"
+             class="mx-auto rounded-full w-48 h-48 object-cover shadow-lg mb-4 border-4 border-slate-200">
+        <p class="text-sm text-slate-500 italic">"A smile. A plan. And an unsubmitted support ticket."</p>
+        <p class="mt-4 text-slate-600">
+          There’s no dev team. No VC funding. Just one person, one browser, and a deep personal vendetta against bad indentation.
+        </p>
+        <h2 class="mt-6 text-3xl font-extrabold text-slate-900">Gene Bixler</h2>
+        <p class="mt-4 text-lg text-slate-600">
+          Quickbase Developer since 2013. Has worked for Quickbase, Quickbase partners, and Quickbase customers —
+          which is basically like seeing the Matrix from all three angles. Built mission-critical apps, untangled legacy horrors,
+          and survived more formula fields than any human should.
+        </p>
+        <p class="mt-4 text-slate-600">
+          Gene created Snippy because Quickbase's editor was giving him rage-induced carpal tunnel.
+          When he’s not building clean interfaces or fixing problems Quickbase never will, he’s probably talking to an AI,
+          reformatting other people’s code, or quietly judging nested <code>If()</code> statements.
+        </p>
+      </div>
+    </section>
   </div>
-</section>
 
         <!-- FAQ Page Section -->
         <div id="page-faq" class="section-hidden">
@@ -411,65 +412,40 @@
     </footer>
 
     <script>
-        function showPage(pageId) {
-            document.getElementById('page-home').classList.add('section-hidden');
-            document.getElementById('page-privacy').classList.add('section-hidden');
-            document.getElementById('page-tos').classList.add('section-hidden');
-            document.getElementById('page-faq').classList.add('section-hidden');
-            
-            document.getElementById('page-' + pageId).classList.remove('section-hidden');
-            window.scrollTo(0, 0);
+    function showPage(pageId) {
+      const sections = ['home', 'faq', 'privacy', 'tos', 'team'];
+      sections.forEach(id => {
+        const el = document.getElementById('page-' + id);
+        if (el) el.classList.add('section-hidden');
+      });
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.remove('section-hidden');
+      window.scrollTo(0, 0);
+    }
 
-            // Safely update URL hash
-            try {
-                if (pageId !== 'home') {
-                    if (history.pushState) {
-                        history.pushState(null, null, '#' + pageId);
-                    } else {
-                        location.hash = '#' + pageId;
-                    }
-                } else {
-                    if (history.pushState) {
-                        history.pushState(null, null, window.location.pathname + window.location.search);
-                    } else {
-                        location.hash = '';
-                    }
-                }
-            } catch (e) {
-                // In a sandboxed environment, just log the error and continue.
-                console.warn("Could not update URL hash:", e.message);
-            }
+    function scrollToId(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.location.hash) {
+        const pageId = window.location.hash.substring(1);
+        if (el) el.classList.add('section-hidden');
+      });
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.remove('section-hidden');
+      window.scrollTo(0, 0);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.location.hash) {
+        const pageId = window.location.hash.substring(1);
+        if (['privacy', 'tos', 'faq', 'team'].includes(pageId)) {
+          showPage(pageId);
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Accordion logic
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            faqQuestions.forEach(button => {
-                button.addEventListener('click', () => {
-                    const wasActive = button.classList.contains('active');
-                    // Optional: Close all other accordions
-                    // faqQuestions.forEach(b => b.classList.remove('active'));
-                    if (!wasActive) {
-                        button.classList.add('active');
-                    } else {
-                         button.classList.remove('active');
-                    }
-                });
-            });
-
-            // Page load logic
-            if (window.location.hash) {
-                var pageId = window.location.hash.substring(1);
-                if (['privacy', 'tos', 'faq'].includes(pageId)) {
-                    showPage(pageId);
-                }
-            }
-        });
-
-        // Set placeholder links - update these when you have the real URLs
-        document.getElementById('install-link').href = "#"; // TODO: Add Chrome Web Store link
-        document.getElementById('install-link-2').href = "#"; // TODO: Add Chrome Web Store link
-        document.getElementById('donate-link').href = "#"; // TODO: Add donation page link (e.g., Ko-fi, Stripe Checkout)
-    </script>
+      }
+    });
+  </script>
 </body>
 </html>
