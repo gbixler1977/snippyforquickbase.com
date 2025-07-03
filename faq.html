@@ -28,7 +28,6 @@
         </div>
       </a>
 
-      <!-- Desktop Menu -->
       <nav class="hidden md:flex space-x-6">
         <a href="/" class="hover:text-blue-600">Home</a>
         <a href="/faq.html" class="text-blue-600 font-bold">FAQ</a>
@@ -38,7 +37,6 @@
         <a href="/index.html#donate" class="hover:text-pink-600">Donate</a>
       </nav>
 
-      <!-- Mobile Hamburger -->
       <button id="mobile-menu-button" class="md:hidden focus:outline-none">
         <svg class="h-6 w-6 text-slate-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -46,7 +44,6 @@
       </button>
     </div>
 
-    <!-- Mobile Menu Links -->
     <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
       <a href="/" class="block text-slate-700">Home</a>
       <a href="/faq.html" class="block text-blue-600 font-bold">FAQ</a>
@@ -63,24 +60,36 @@
       <h1 class="text-4xl font-extrabold text-slate-900">Frequently Asked (and Occasionally Eye-Rolling) Questions</h1>
     </div>
     <div class="mt-12 space-y-4">
-      <!-- Example FAQ Item -->
-      <div class="bg-white rounded-lg shadow-sm">
-        <details class="group open:shadow-md">
-          <summary class="cursor-pointer flex justify-between items-center p-6 text-left">
-            <span class="text-lg font-bold text-slate-800">“Snippy should have more themes.”</span>
-            <span class="text-slate-500 group-open:rotate-180 transition-transform">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </span>
-          </summary>
-          <div class="px-6 pb-6 text-slate-600">
-            <p>That’s not a question. That’s a sentence with attitude.</p>
-            <p class="mt-2">But hey — noted. Snippy launches with a couple of light and dark options to avoid theme sprawl and ensure bracket highlighting doesn’t get lost in a sea of aesthetic indecision.</p>
-          </div>
-        </details>
-      </div>
-      <!-- More FAQ items go here... (can be copied from your original content) -->
+      <!-- FAQ items -->
+      <script>
+        const faqs = [
+          ["\u201cSnippy should have more themes.\u201d", "That\u2019s not a question. That\u2019s a sentence with attitude.", "But hey \u2014 noted. Snippy launches with a couple of light and dark options to avoid theme sprawl and ensure bracket highlighting doesn\u2019t get lost in a sea of aesthetic indecision. More may come. Or you could suggest one, and if it doesn\u2019t make me want to gouge out my retinas, we\u2019ll talk."],
+          ["Does Snippy actually do anything, or is it just a CodeMirror wrapper with delusions of grandeur?", "Snippy enhances the default Quickbase formula/code editors with syntax highlighting, beautification (via js-beautify), versioned Google Drive saves (manual only \u2014 because autosave without undo is the devil), and a control panel that doesn't scream \u201ccorporate compromise.\u201d", "So yes, it does things. Important things. Beautiful things. Snarky things."],
+          ["Why does Snippy ask me to donate?", "Because Snippy integrates with Google Drive, and Google charges for API usage at scale. Donations help cover that \u2014 and keep the extension free for everyone. If you\u2019re philosophically opposed to giving money to projects that improve your life, you can move on. We\u2019ll still let you use Snippy. But your Quickbase app might mysteriously vanish. (Kidding. Probably.)"],
+          ["Is Snippy officially affiliated with Quickbase?", "No. Snippy is an independent project built by someone who loves Quickbase, is endlessly annoyed by its limitations, and decided to fix a few of them without permission.", "Think of Snippy as Quickbase\u2019s chaotic neutral twin. We\u2019re not sponsored. We\u2019re not sanctioned. We\u2019re just better dressed."],
+          ["Can Snippy break my Quickbase formulas?", "Only if you try really, really hard.", "Snippy preserves Quickbase\u2019s native error checking by not replacing the textarea \u2014 it just wraps it in a better UI.", "Still, if you manage to break something and can reproduce it without black magic or cursed CSVs, we want to know."],
+          ["Where does Snippy store my code?", "Short version: Nowhere. And optionally in your Google Drive \u2014 only if you enable it.", "Snippy doesn\u2019t touch your Quickbase app data. It\u2019s not slurping up your secrets or emailing your boss about those six nested If() statements ... though that might be a good idea for a future enhancement."],
+          ["I pasted in a mess and nothing happened. Where\u2019s the beautify button?", "Right there. If you don\u2019t see it, the universe is punishing you for your crimes against indentation. Reload and repent."],
+          ["Is Snippy open source?", "Not yet. But we\u2019re considering it \u2014 with limits. Because giving the world a gift doesn\u2019t mean handing over the keys to your apartment and your espresso machine.", "Stay tuned."],
+          ["I have feedback! Where do I send it?", "Ah, the most helpful kind of message: unfiltered opinions delivered with urgency and no context.", "Seriously though \u2014 we welcome feedback, from some people. There\u2019s a feedback button in the control panel. Constructive feedback gets prioritized. Rants get archived under \u201cperformance art.\u201d"]
+        ];
+        document.write(faqs.map(([q, ...as]) => `
+          <div class=\"bg-white rounded-lg shadow-sm\">
+            <details class=\"group open:shadow-md\">
+              <summary class=\"cursor-pointer flex justify-between items-center p-6 text-left\">
+                <span class=\"text-lg font-bold text-slate-800\">${q}</span>
+                <span class=\"text-slate-500 group-open:rotate-180 transition-transform\">
+                  <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">
+                    <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M19 9l-7 7-7-7\" />
+                  </svg>
+                </span>
+              </summary>
+              <div class=\"px-6 pb-6 text-slate-600\">
+                ${as.map(p => `<p class=\"mt-2\">${p}</p>`).join('')}
+              </div>
+            </details>
+          </div>`).join(''));
+      </script>
     </div>
   </main>
 
