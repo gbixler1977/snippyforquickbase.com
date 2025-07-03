@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snippy for Quickbase</title>
+    <link rel="icon" type="image/svg+xml" href="snippy-logo.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,44 +68,45 @@
             height: 0.75rem;
             border-radius: 9999px;
         }
+        nav a.active {
+  color: #2563eb; /* Tailwind's blue-600 */
+  font-weight: 700;
+}
+
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-  <!-- Header with Navigation -->
-  <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex-shrink-0">
-          <a href="#" class="flex items-center gap-2" onclick="showPage('home'); return false;">
-            <img class="h-10 w-auto" src="snippy-logo.svg" alt="Snippy Logo">
-            <div class="snippy-brand-text">
-              <span class="main-name">Snippy</span>
-              <span class="sub-name">for Quickbase</span>
-            </div>
-          </a>
-        </div>
-        <nav class="hidden md:flex md:space-x-8">
-          <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('features')">Features</a>
-          <a href="#demo" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('demo')">Demo</a>
-          <a href="#faq" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('faq'); return false;">FAQ</a>
-          <a href="#team" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('team'); return false;">Meet the Team</a>
-          <a href="#privacy" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
-          <a href="#tos" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('tos'); return false;">Terms of Service</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+ <!-- REPLACE YOUR CURRENT NAVIGATION MENU WITH THIS CLEANED-UP VERSION -->
 
-                <!-- CTA Button -->
-                <div class="flex items-center">
-                    <a href="#" id="install-link" class="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700">
-                        Install for Chrome
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
+<!-- Header with Navigation -->
+<header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex-shrink-0">
+        <a href="#" class="flex items-center gap-2" onclick="showPage('home'); return false;">
+          <img class="h-10 w-auto" src="snippy-logo.svg" alt="Snippy Logo">
+          <div class="snippy-brand-text">
+            <span class="main-name">Snippy</span>
+            <span class="sub-name">for Quickbase</span>
+          </div>
+        </a>
+      </div>
+      <nav class="hidden md:flex md:space-x-8">
+        <a href="#features" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('features')">Features</a>
+        <a href="#demo" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="scrollToId('demo')">Demo</a>
+        <a href="#faq" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('faq'); return false;">FAQ</a>
+        <a href="#team" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('team'); return false;">Meet the Team</a>
+        <a href="#privacy" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('privacy'); return false;">Privacy Policy</a>
+        <a href="#tos" class="font-medium text-slate-600 hover:text-blue-600 transition-colors" onclick="showPage('tos'); return false;">Terms of Service</a>
+        <a href="#donate" class="font-medium text-slate-600 hover:text-pink-600 transition-colors" onclick="scrollToId('donate')">Donate</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+                
 
     <!-- Main Content -->
     <main>
@@ -410,42 +412,61 @@
             </p>
         </div>
     </footer>
+<script>
+function showPage(pageId) {
+  const sections = ['home', 'faq', 'privacy', 'tos', 'team'];
+  sections.forEach(id => {
+    const el = document.getElementById('page-' + id);
+    if (el) el.classList.add('section-hidden');
+  });
+  const target = document.getElementById('page-' + pageId);
+  if (target) target.classList.remove('section-hidden');
+  window.scrollTo(0, 0);
+}
 
-    <script>
-    function showPage(pageId) {
-      const sections = ['home', 'faq', 'privacy', 'tos', 'team'];
-      sections.forEach(id => {
-        const el = document.getElementById('page-' + id);
-        if (el) el.classList.add('section-hidden');
-      });
-      const target = document.getElementById('page-' + pageId);
-      if (target) target.classList.remove('section-hidden');
-      window.scrollTo(0, 0);
-    }
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    showPage('home');
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }, 50);
+  }
+}
 
-    function scrollToId(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  const hash = window.location.hash.substring(1);
+  if (['privacy', 'tos', 'faq', 'team'].includes(hash)) {
+    showPage(hash);
+  } else {
+    showPage('home');
+  }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.location.hash) {
-        const pageId = window.location.hash.substring(1);
-        if (el) el.classList.add('section-hidden');
-      });
-      const target = document.getElementById('page-' + pageId);
-      if (target) target.classList.remove('section-hidden');
-      window.scrollTo(0, 0);
-    }
+  // Add IntersectionObserver for active nav link
+  const sectionIds = ['features', 'demo', 'donate'];
+  const options = { root: null, rootMargin: '0px', threshold: 0.5 };
 
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.location.hash) {
-        const pageId = window.location.hash.substring(1);
-        if (['privacy', 'tos', 'faq', 'team'].includes(pageId)) {
-          showPage(pageId);
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      const navLink = document.querySelector(`nav a[href="#${id}"]`);
+      if (navLink) {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+          navLink.classList.add('active');
         }
       }
     });
-  </script>
+  }, options);
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+});
+</script>
+
+
+    
 </body>
 </html>
