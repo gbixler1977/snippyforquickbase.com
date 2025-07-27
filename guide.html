@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Snippy for Quickbase User Guide</title>
+    <style>
+      body {
+        font-family: 'Figtree', Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+        margin: 20px;
+      }
+
+      h1 {
+        font-size: 2em;
+        margin-bottom: 0.5em;
+        color: #2C9382;
+      }
+
+      h2 {
+        font-size: 1.5em;
+        margin-top: 2em;
+        margin-bottom: 0.5em;
+        color: #2C9382;
+      }
+
+      h3 {
+        font-size: 1.2em;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+        color: #2C9382;
+      }
+
+      .guide-container {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      #toc {
+        flex: 0 0 280px;
+        margin-right: 20px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        border-radius: 4px;
+        background: #f9f9f9;
+        font-size: 0.95em;
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+      }
+
+      #toc summary {
+        cursor: pointer;
+        font-weight: bold;
+        margin: 5px 0;
+        color: #2C9382;
+      }
+
+      #toc ul {
+        list-style: none;
+        margin: 5px 0 10px 0;
+        padding-left: 15px;
+      }
+
+      #toc a {
+        text-decoration: none;
+        color: #2C9382;
+        font-size: 0.9em;
+      }
+
+      #toc a:hover {
+        text-decoration: underline;
+      }
+
+      main {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .tip {
+        background: #f0f8ff;
+        border-left: 4px solid #66b3ff;
+        padding: 0.8em 1em;
+        margin: 1em 0;
+        border-radius: 3px;
+      }
+
+      .warning {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 0.8em 1em;
+        margin: 1em 0;
+        border-radius: 3px;
+      }
+
+      .feature-highlight {
+        background: #e8f5e8;
+        border-left: 4px solid #28a745;
+        padding: 0.8em 1em;
+        margin: 1em 0;
+        border-radius: 3px;
+      }
+
+      code {
+        background: #f4f4f4;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+      }
+
+      kbd {
+        background: #333;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+
+      .keyboard-shortcut {
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+
+      ul.feature-list {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      ul.feature-list li {
+        margin: 8px 0;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      ul.feature-list li:before {
+        content: "✨";
+        position: absolute;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Snippy for Quickbase – User Guide</h1>
+    <p>
+      <strong>Snippy</strong> is your Chrome extension for when Quickbase's code editing feels like programming on a calculator from 1987. This guide will show you how to transform your formula fields and code pages from "Why does this hurt?" to "Actually, this is pretty nice." If you don't know what Quickbase is, you're probably lost. If you do know what it is, you're probably tired of its text editors. We're here to help.
+    </p>
+    
+    <div class="guide-container">
+      <nav id="toc">
+        <details open>
+          <summary>Installation</summary>
+          <ul>
+            <li><a href="#install-chrome">Chrome Installation</a></li>
+            <li><a href="#install-edge">Edge Installation</a></li>
+            <li><a href="#integration">Quickbase Integration</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Getting Started</summary>
+          <ul>
+            <li><a href="#launch-formula">Formula Fields</a></li>
+            <li><a href="#launch-code">Code Pages</a></li>
+            <li><a href="#first-time">First-Time Setup</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>The Snippy Editor</summary>
+          <ul>
+            <li><a href="#editor-interface">Interface Overview</a></li>
+            <li><a href="#syntax-highlighting">Syntax Highlighting</a></li>
+            <li><a href="#error-detection">Error Detection</a></li>
+            <li><a href="#autocomplete">Smart Autocomplete</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Core Features</summary>
+          <ul>
+            <li><a href="#beautification">Code Beautification</a></li>
+            <li><a href="#search-replace">Search & Replace</a></li>
+            <li><a href="#field-lookup">Field Reference</a></li>
+            <li><a href="#function-helper">Function Reference</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Revision Management</summary>
+          <ul>
+            <li><a href="#storage-options">Storage Options</a></li>
+            <li><a href="#google-drive">Google Drive Backup</a></li>
+            <li><a href="#onedrive">OneDrive Backup</a></li>
+            <li><a href="#local-storage">Local Storage</a></li>
+            <li><a href="#revision-history">Revision History</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Customization</summary>
+          <ul>
+            <li><a href="#themes">Themes</a></li>
+            <li><a href="#font-settings">Font Settings</a></li>
+            <li><a href="#preferences">Preferences</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Premium Features</summary>
+          <ul>
+            <li><a href="#donor-benefits">Donor Benefits</a></li>
+            <li><a href="#unlock-process">Unlocking Premium</a></li>
+            <li><a href="#freeloader-comments">Freeloader Comments</a></li>
+          </ul>
+        </details>
+        
+        <details open>
+          <summary>Troubleshooting</summary>
+          <ul>
+            <li><a href="#common-issues">Common Issues</a></li>
+            <li><a href="#browser-compatibility">Browser Compatibility</a></li>
+            <li><a href="#support">Getting Support</a></li>
+          </ul>
+        </details>
+      </nav>
+      
+      <main>
+        <h2 id="installation">Installation</h2>
+        
+        <h3 id="install-chrome">Chrome Installation</h3>
+        <p>Installing Snippy is easier than explaining why Quickbase's text editor exists in this millennium:</p>
+        <ol>
+          <li><strong>Visit the Chrome Web Store</strong> and search for "Snippy for Quickbase" or follow the link from our website</li>
+          <li><strong>Click "Add to Chrome"</strong> - Yes, it's safe. No, it won't read your email or judge your browsing history</li>
+          <li><strong>Pin the extension</strong> (optional but recommended) - Click the puzzle piece icon in your toolbar and pin Snippy</li>
+        </ol>
+        
+        <h3 id="install-edge">Edge Installation</h3>
+        <p>Using Microsoft Edge? Brave choice. Here's how to make it work:</p>
+        <ol>
+          <li><strong>Enable Chrome extensions</strong> - Go to Edge Settings → Extensions → "Allow extensions from other stores"</li>
+          <li><strong>Install from Chrome Web Store</strong> - Yes, it's a bit weird, but it works</li>
+          <li><strong>Accept the limitations</strong> - Google Drive backup won't work because Microsoft and Google don't play nice*</li>
+        </ol>
+        
+        <div class="warning">
+          <strong>Edge Limitation:</strong> Google Drive integration is disabled in Edge due to OAuth restrictions. OneDrive and local storage work perfectly fine.
+        </div>
+        
+        <p style="font-size:80%;">*Okay fine, it's because Edge treats Chrome extensions like suspicious raccoons unless you beg it to trust Google's OAuth flow, and I'm not here to negotiate with <em>browsers</em>.</p>
+        
+        <h3 id="integration">Quickbase Integration</h3>
+        <p>Once installed, Snippy automatically integrates with Quickbase. No setup required, no configuration screens to navigate. Just refresh your Quickbase tabs and Snippy will appear wherever you have formula fields or code pages. It's like magic, but with better error messages.</p>
+        
+        <h2 id="getting-started">Getting Started</h2>
+        
+        <h3 id="launch-formula">Launching from Formula Fields</h3>
+        <p>When you visit any formula field in Quickbase, you'll see Snippy's control panel appear above the native editor. Click "🚀 Open Snippy Editor" and a new tab opens with your formula loaded and ready for actual editing.</p>
+        
+        <div class="feature-highlight">
+          <strong>What happens next:</strong> Snippy opens in a new tab, loads your formula with full syntax highlighting, enables autocomplete for fields and functions, and starts real-time error checking. When you save, it pushes the changes back to Quickbase and closes the editor tab.
+        </div>
+        
+        <h3 id="launch-code">Launching from Code Pages</h3>
+        <p>Code pages work the same way. Snippy detects whether you're editing HTML, CSS, or JavaScript and applies appropriate syntax highlighting and error checking. The days of squinting at monospace text in a tiny box are over.</p>
+        
+        <h3 id="first-time">First-Time Setup</h3>
+        <p>On your first launch, Snippy will:</p>
+        <ul class="feature-list">
+          <li>Set up local storage for revision history</li>
+          <li>Apply the default theme (you can change this later)</li>
+          <li>Show you a friendly "freeloader comment" encouraging donation</li>
+          <li>Possibly make a sarcastic remark about your code formatting</li>
+        </ul>
+        
+        <h2 id="editor">The Snippy Editor</h2>
+        
+        <h3 id="editor-interface">Interface Overview</h3>
+        <p>The Snippy editor opens in a dedicated tab with a clean, professional interface:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Header toolbar</strong> - Brand, field search, function lookup, beautify, search, and settings</li>
+          <li><strong>Main editor</strong> - Full-screen CodeMirror with line numbers and syntax highlighting</li>
+          <li><strong>Footer controls</strong> - Cancel and Save & Close buttons, plus font size indicator</li>
+        </ul>
+        
+        <div class="warning">
+          <strong>Important:</strong> When you click "Save & Close," Snippy sends your changes back to Quickbase but you still need to click Quickbase's Save button. Snippy isn't trying to be difficult - Quickbase just requires that final confirmation.
+        </div>
+        
+        <h3 id="syntax-highlighting">Syntax Highlighting</h3>
+        <p>Snippy provides intelligent syntax highlighting for:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Quickbase formulas</strong> - Functions, field references, variables, strings, numbers</li>
+          <li><strong>JavaScript</strong> - Keywords, functions, operators, comments</li>
+          <li><strong>HTML/CSS</strong> - Tags, attributes, selectors, properties</li>
+          <li><strong>Comments and strings</strong> - Clearly distinguished from executable code</li>
+        </ul>
+        
+        <h3 id="error-detection">Error Detection & Validation</h3>
+        <p>For formula fields, Snippy provides real-time validation:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Syntax errors</strong> - Red markers with detailed explanations</li>
+          <li><strong>Missing parentheses</strong> - Automatic bracket matching and highlighting</li>
+          <li><strong>Invalid functions</strong> - Warnings for unrecognized function names</li>
+          <li><strong>Type mismatches</strong> - Alerts for potential data type issues</li>
+        </ul>
+        
+        <div class="tip">
+          <strong>Pro tip:</strong> Red error markers prevent saving until fixed. Yellow warnings are suggestions - use your judgment.
+        </div>
+        
+        <h3 id="autocomplete">Smart Autocomplete</h3>
+        <p>Snippy's autocomplete system is context-aware and actually helpful:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Field references</strong> - Type <code>[</code> to see all available fields</li>
+          <li><strong>Functions</strong> - Function names with parameter hints and documentation</li>
+          <li><strong>Variables</strong> - Type <code>$</code> to reference declared variables</li>
+          <li><strong>Keywords</strong> - All Quickbase formula keywords and operators</li>
+        </ul>
+        
+        <div class="keyboard-shortcut">
+          <strong>Autocomplete triggers:</strong>
+          <ul>
+            <li><kbd>[</kbd> - Field reference autocomplete</li>
+            <li><kbd>$</kbd> - Variable reference autocomplete</li>
+            <li>Start typing any function name</li>
+            <li><kbd>Ctrl+Space</kbd> - Force show autocomplete</li>
+          </ul>
+        </div>
+        
+        <h2 id="features">Core Features</h2>
+        
+        <h3 id="beautification">Code Beautification</h3>
+        <p>Click the "✨ Beautify" button and watch Snippy transform your code from "what was I thinking?" to "actually readable." The beautifier is context-aware:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Formula beautification</strong> - Intelligent indentation for If/Case statements, function arguments, and concatenation chains</li>
+          <li><strong>JavaScript/HTML/CSS</strong> - Standard formatting with consistent indentation and spacing</li>
+          <li><strong>Preservation</strong> - Comments and variable declarations stay intact</li>
+          <li><strong>Reversible</strong> - Click "↩️ Revert" if you hate the results</li>
+        </ul>
+        
+        <div class="feature-highlight">
+          <strong>Fan favorite feature:</strong> The formula beautifier understands Quickbase's structure and formats If() statements, Case() statements, and long concatenations intelligently. You'll wonder how you lived without it.
+        </div>
+        
+        <h3 id="search-replace">Search & Replace</h3>
+        <p>Press <kbd>Ctrl+F</kbd> (or <kbd>Cmd+F</kbd> on Mac) to open the search bar, or click the "🔍 Search" button.</p>
+        
+        <div class="keyboard-shortcut">
+          <strong>Search shortcuts:</strong>
+          <ul>
+            <li><kbd>Ctrl+F</kbd> - Open search</li>
+            <li><kbd>Enter</kbd> - Find next</li>
+            <li><kbd>Shift+Enter</kbd> - Find previous</li>
+            <li><kbd>Escape</kbd> - Close search</li>
+          </ul>
+        </div>
+        
+        <p>The search and replace functionality includes:</p>
+        <ul class="feature-list">
+          <li><strong>Real-time highlighting</strong> - All matches highlighted as you type</li>
+          <li><strong>Match counter</strong> - Shows "3 of 15 matches" style feedback</li>
+          <li><strong>Replace options</strong> - Replace one, replace all, or be selective</li>
+          <li><strong>Case-insensitive</strong> - Finds matches regardless of capitalization</li>
+        </ul>
+        
+        <h3 id="field-lookup">Field Reference Lookup</h3>
+        <p>The field search box in the header lets you find and insert field references without memorizing every field name in your table:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Live search</strong> - Type to filter field names instantly</li>
+          <li><strong>Field types</strong> - Each field shows its data type</li>
+          <li><strong>Click to insert</strong> - Adds the proper <code>[Field Name]</code> syntax</li>
+          <li><strong>Keyboard navigation</strong> - Arrow keys and Enter for quick selection</li>
+        </ul>
+        
+        <h3 id="function-helper">Function Reference Modal</h3>
+        <p>Click "Functions..." to open the comprehensive function reference:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Searchable library</strong> - Find functions by name or keyword</li>
+          <li><strong>Live documentation</strong> - Signature, description, and examples</li>
+          <li><strong>One-click insert</strong> - Inserts function with parentheses and positions cursor</li>
+          <li><strong>Parameter hints</strong> - Shows expected parameters and data types</li>
+        </ul>
+        
+        <div class="tip">
+          <strong>Time saver:</strong> Instead of googling "Quickbase ToText function," just open the function reference and search for "totext." 
+        </div>
+        
+        <h2 id="revisions">Revision Management</h2>
+        
+        <h3 id="storage-options">Storage Options</h3>
+        <p>Snippy automatically saves revisions every time you open and close the editor. You can choose where these backups are stored:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Local Storage</strong> - Saves in your browser (default, always available)</li>
+          <li><strong>Google Drive</strong> - Cloud backup in your personal Google Drive</li>
+          <li><strong>OneDrive</strong> - Cloud backup in your Microsoft OneDrive</li>
+          <li><strong>None</strong> - Disable revision saving (not recommended, but you do you)</li>
+        </ul>
+        
+        <h3 id="google-drive">Google Drive Integration</h3>
+        <p>Enable Google Drive storage for automatic cloud backup:</p>
+        
+        <ol>
+          <li><strong>Select "Google Drive"</strong> from Storage Options in Settings</li>
+          <li><strong>Authorize access</strong> - Snippy will request permission to create files in your Drive</li>
+          <li><strong>Automatic organization</strong> - Creates "Snippy for Quickbase" folder with organized subfolders</li>
+        </ol>
+        
+        <div class="feature-highlight">
+          <strong>Folder structure:</strong> Snippy creates organized folders like "Formulas/TableID/Field123" and "Code Pages/AppID/Page456" so you can find your backups easily.
+        </div>
+        
+        <h3 id="onedrive">OneDrive Integration</h3>
+        <p>OneDrive works similarly to Google Drive but with Microsoft's cloud:</p>
+        
+        <ol>
+          <li><strong>Select "Microsoft OneDrive"</strong> from Storage Options</li>
+          <li><strong>Sign in with Microsoft</strong> - Standard OAuth flow</li>
+          <li><strong>Same organization</strong> - Same folder structure as Google Drive</li>
+        </ol>
+        
+        <div class="tip">
+          <strong>Why two cloud options?</strong> Some organizations block Google Drive but allow OneDrive (or vice versa). Snippy works with what you've got.
+        </div>
+        
+        <h3 id="local-storage">Local Storage</h3>
+        <p>Local storage keeps your revision history in your browser:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Always available</strong> - No network required, no authorization needed</li>
+          <li><strong>Limited to 20 revisions</strong> - Automatically cleans up old versions</li>
+          <li><strong>Browser-specific</strong> - Not shared between different browsers or devices</li>
+          <li><strong>Survives browser restarts</strong> - Persisted until you clear browser data</li>
+        </ul>
+        
+        <h3 id="revision-history">Using Revision History</h3>
+        <p>To view and restore previous versions:</p>
+        
+        <ol>
+          <li><strong>Click "🔄 Load Revisions"</strong> in Settings</li>
+          <li><strong>Select a version</strong> from the dropdown (shows storage source and timestamp)</li>
+          <li><strong>Preview the change</strong> - The editor loads that version immediately</li>
+          <li><strong>Save if you want to keep it</strong> - Or load a different version</li>
+        </ol>
+        
+        <div class="warning">
+          <strong>Manual saves:</strong> Use "💾 Manually Save" to create a revision without closing the editor. Useful before major changes.
+        </div>
+        
+        <h2 id="customization">Customization</h2>
+        
+        <h3 id="themes">Themes</h3>
+        <p>Snippy comes with light and dark themes built-in. Donors unlock 50+ additional themes including:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Popular themes</strong> - Dracula, Monokai, Solarized, Material</li>
+          <li><strong>Specialized themes</strong> - High contrast, colorblind-friendly options</li>
+          <li><strong>Vintage themes</strong> - Retro terminal and classic editor styles</li>
+          <li><strong>Custom themes</strong> - Quickbase-specific light and dark themes</li>
+        </ul>
+        
+        <p>Donors can set separate preferred themes for light and dark modes - switch between light/dark and your preferred theme for that mode loads automatically.</p>
+        
+        <h3 id="font-settings">Font Settings</h3>
+        <p>Adjust font size with the +/- buttons in Settings. Changes apply immediately and persist across sessions. The current font size is shown in the footer.</p>
+        
+        <div class="tip">
+          <strong>Accessibility:</strong> Larger fonts make error markers and autocomplete hints bigger too, improving visibility for all interface elements.
+        </div>
+        
+        <h3 id="preferences">Preferences</h3>
+        <p>Additional settings available to donors:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Freeloader comments toggle</strong> - Turn off the snarky messages</li>
+          <li><strong>Theme preferences</strong> - Set different themes for light/dark modes</li>
+          <li><strong>Comment submission</strong> - Submit your own freeloader comments for review</li>
+        </ul>
+        
+        <h2 id="premium">Premium Features</h2>
+        
+        <h3 id="donor-benefits">What Donors Get</h3>
+        <p>Donating to Snippy unlocks premium features:</p>
+        
+        <ul class="feature-list">
+          <li><strong>All 50+ themes</strong> - The full theme collection</li>
+          <li><strong>Freeloader comment control</strong> - Turn off the snark or leave it on for entertainment</li>
+          <li><strong>Comment submission</strong> - Submit your own witty comments to roast freeloaders</li>
+          <li><strong>Separate theme preferences</strong> - Different themes for light and dark modes</li>
+          <li><strong>Warm fuzzy feeling</strong> - You're supporting continued development</li>
+        </ul>
+        
+        <h3 id="unlock-process">Unlocking Premium</h3>
+        <p>After donating through the website:</p>
+        
+        <ol>
+          <li><strong>Check your email</strong> - You'll receive an unlock code</li>
+          <li><strong>Click "I already donated"</strong> in the Snippy editor settings</li>
+          <li><strong>Enter your email and code</strong> - Same email you used for donation</li>
+          <li><strong>Enjoy premium features</strong> - Settings panel updates to show donor options</li>
+        </ol>
+        
+        <div class="tip">
+          <strong>Lost your code?</strong> Use the "📩 Retrieve my token" link in the unlock dialog.
+        </div>
+        
+        <h3 id="freeloader-comments">About Freeloader Comments</h3>
+        <p>Snippy occasionally shows humorous messages encouraging donation. These comments:</p>
+        
+        <ul class="feature-list">
+          <li><strong>Appear randomly</strong> - Not on every action, just often enough to be noticed</li>
+          <li><strong>Are dismissible</strong> - Click to dismiss, or wait and they auto-dismiss</li>
+          <li><strong>Vary in snark level</strong> - From mildly encouraging to delightfully sarcastic</li>
+          <li><strong>Can be disabled</strong> - Donors can turn them off entirely</li>
+        </ul>
+        
+        <div class="feature-highlight">
+          <strong>Community feature:</strong> Donors can submit their own freeloader comments for review. Approved comments join the rotation and include attribution to the submitter.
+        </div>
+        
+        <h2 id="troubleshooting">Troubleshooting</h2>
+        
+        <h3 id="common-issues">Common Issues</h3>
+        
+        <p><strong>Editor won't open:</strong></p>
+        <ul>
+          <li>Refresh the Quickbase page and try again</li>
+          <li>Check that you're on a formula field or code page</li>
+          <li>Disable other extensions temporarily to check for conflicts</li>
+        </ul>
+        
+        <p><strong>Changes not saving to Quickbase:</strong></p>
+        <ul>
+          <li>Remember to click Quickbase's Save button after Snippy saves</li>
+          <li>Check for validation errors in Quickbase's interface</li>
+          <li>Try refreshing and re-editing if the field appears empty</li>
+        </ul>
+        
+        <p><strong>Cloud storage authentication fails:</strong></p>
+        <ul>
+          <li>Clear browser cookies for Google/Microsoft and try again</li>
+          <li>Check popup blockers - authorization windows might be blocked</li>
+          <li>Try switching to local storage temporarily</li>
+        </ul>
+        
+        <p><strong>Autocomplete not working:</strong></p>
+        <ul>
+          <li>Make sure you're editing a formula field (not available in code pages)</li>
+          <li>Try typing <code>[</code> or <code>$</code> to trigger field/variable completion</li>
+          <li>Check that the page has fully loaded before opening Snippy</li>
+        </ul>
+        
+        <h3 id="browser-compatibility">Browser Compatibility</h3>
+        
+        <p><strong>Chrome:</strong> Full support for all features</p>
+        <p><strong>Edge:</strong> Full support except Google Drive integration (OneDrive works fine)</p>
+        <p><strong>Other browsers:</strong> Not supported - Snippy is a Chrome extension</p>
+        
+        <div class="warning">
+          <strong>Edge users:</strong> You'll need to enable "Allow extensions from other stores" in Edge settings and install from the Chrome Web Store. Google Drive backup won't work, but OneDrive and local storage work perfectly.
+        </div>
+        
+        <h3 id="support">Getting Support</h3>
+        
+        <p>If you're having issues:</p>
+        
+        <ol>
+          <li><strong>Check this guide</strong> - Most questions are answered here</li>
+          <li><strong>Try the website FAQ</strong> - Additional troubleshooting tips</li>
+          <li><strong>Use the feedback button</strong> - In Snippy's settings menu</li>
+          <li><strong>Be specific</strong> - Include browser, Quickbase URL type, and error messages</li>
+        </ol>
+        
+        <div class="tip">
+          <strong>Bug reports:</strong> The more specific you are, the faster we can fix issues.
+        </div>
+        
+        <hr style="margin: 3em 0;">
+        
+        <p style="text-align: center; color: #666; font-style: italic;">
+          Made with caffeine and mild frustration at text editors that haven't been updated since the Clinton administration.<br>
+          <strong>Snippy for Quickbase</strong> - Because your code deserves better.
+        </p>
+        
+      </main>
+    </div>
+  </body>
+</html>
