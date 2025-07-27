@@ -24,7 +24,7 @@
         <img class="h-10 w-auto" src="/snippy-logo.svg" alt="Snippy Logo">
         <div class="flex flex-col leading-tight">
           <span class="font-bold text-lg text-slate-900">Snippy</span>
-          <span class="text-sm text-slate-500">for Code Enhancer</span>
+          <span class="text-sm text-slate-500">Code Enhancer</span>
         </div>
       </a>
 
@@ -63,36 +63,93 @@
   <main class="max-w-3xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
     <article class="prose prose-lg text-slate-700">
       <h1 class="text-4xl font-extrabold text-slate-900">Privacy Policy for Snippy</h1>
-      <p class="lead">Last Updated: July 1, 2025</p>
+      <p class="lead">Last Updated: January 27, 2025</p>
 
       <p>This Privacy Policy explains how Snippy Code Enhancer ("we," "us," or "our") handles your information when you use our Chrome extension (the "Service"). Your privacy and data security are our top priorities.</p>
 
       <h2>Information We Do NOT Collect or Store</h2>
       <ul>
-        <li><strong>Your Code and Formulas:</strong> Snippy does <u>NOT</u> save, store, transmit, or log any of the code or formulas you write. Your work is processed in your browser and sent directly back to your Quickbase page or, with your explicit action, to your own Google Drive account. It never touches our servers.</li>
+        <li><strong>Your Code and Formulas:</strong> Snippy does <u>NOT</u> save, store, transmit, or log any of the code or formulas you write on our servers. Your work is processed locally in your browser and sent directly back to your Quickbase page or, with your explicit permission, to your chosen cloud storage account.</li>
         <li><strong>Your Quickbase Data:</strong> Snippy does not read, access, or store any of the data within your Quickbase applications or tables.</li>
+        <li><strong>Your Personal Files:</strong> Snippy cannot access any files outside of the specific folders it creates for revision storage.</li>
+      </ul>
+
+      <h2>Revision Storage Options</h2>
+      <p>Snippy offers multiple ways to store revision history of your work. <strong>All storage is optional</strong> and controlled entirely by you:</p>
+
+      <h3>1. Local Browser Storage (Default)</h3>
+      <ul>
+        <li><strong>What it stores:</strong> Up to 20 recent revisions per formula field or code page</li>
+        <li><strong>Where it's stored:</strong> In your browser's local storage on your device</li>
+        <li><strong>Privacy:</strong> Never leaves your device, completely private</li>
+        <li><strong>Limitations:</strong> Lost if you clear browser data or switch devices</li>
+      </ul>
+
+      <h3>2. Google Drive Integration (Optional)</h3>
+      <ul>
+        <li><strong>Permission Requested:</strong> <code>https://www.googleapis.com/auth/drive.file</code></li>
+        <li><strong>What this allows:</strong> Snippy can create a folder named "Snippy for Quickbase" in your Google Drive and create/read/update files <u>only</u> within that folder and its subfolders</li>
+        <li><strong>What this does NOT allow:</strong> Snippy <u>cannot</u> see or access anything else in your Google Drive</li>
+        <li><strong>Your control:</strong> You can revoke access at any time through your Google Account settings</li>
+      </ul>
+
+      <h3>3. Microsoft OneDrive Integration (Optional)</h3>
+      <ul>
+        <li><strong>Permission Requested:</strong> <code>Files.ReadWrite</code> scope for OneDrive</li>
+        <li><strong>What this allows:</strong> Snippy can create a folder named "Snippy for Quickbase" in your OneDrive and create/read/update files <u>only</u> within that folder and its subfolders</li>
+        <li><strong>What this does NOT allow:</strong> Snippy <u>cannot</u> see or access anything else in your OneDrive</li>
+        <li><strong>Your control:</strong> You can revoke access at any time through your Microsoft Account settings</li>
       </ul>
 
       <h2>Information We Collect and How We Use It</h2>
-      <h3>1. Google Drive Integration (Optional)</h3>
-      <ul>
-        <li><strong>Permission Requested:</strong> <code>https://www.googleapis.com/auth/drive.file</code></li>
-        <li><strong>What this allows:</strong> Snippy can create a folder named "Snippy Code Enhancer" in your Google Drive and create/read/update files <u>only</u> within that folder.</li>
-        <li><strong>What this does NOT allow:</strong> Snippy <u>cannot</u> see or access anything else in your Drive.</li>
-      </ul>
-     
 
-      <h3>2. User Feedback</h3>
-      <p>Users who submit feedback may have their suggestions stored for the purpose of improving the extension.</p>
+      <h3>Donor Verification System</h3>
+      <p>If you choose to unlock premium features by donating:</p>
+      <ul>
+        <li><strong>What we collect:</strong> Email address and verification code</li>
+        <li><strong>How we use it:</strong> To verify donation status and enable premium features</li>
+        <li><strong>Storage:</strong> Stored securely on our servers for verification purposes only</li>
+      </ul>
+
+      <h3>User Feedback</h3>
+      <ul>
+        <li><strong>What we collect:</strong> Name, email, and message content when you submit feedback</li>
+        <li><strong>How we use it:</strong> To respond to your feedback and improve the extension</li>
+        <li><strong>Retention:</strong> Feedback is stored for the purpose of product improvement</li>
+      </ul>
+
+      <h3>Freeloader Comments System</h3>
+      <p>Donors can submit humorous comments for review. If you participate:</p>
+      <ul>
+        <li><strong>What we collect:</strong> Your submitted comment text and attribution preferences</li>
+        <li><strong>How we use it:</strong> Approved comments may be shown to free users with optional attribution</li>
+        <li><strong>Your control:</strong> You choose whether your name is shown with approved comments</li>
+      </ul>
 
       <h2>Data Security</h2>
-      <p>All transmission between Snippy and the donation verification service is encrypted using TLS (HTTPS). We take care of your data like it’s our own.
+      <p>All communication between Snippy and our servers is encrypted using TLS (HTTPS). We treat your data with the same care we'd want for our own. However, we're a small operation, not a Fortune 500 company with a dedicated security team, so please don't store nuclear launch codes in your Quickbase formulas.</p>
+
+      <h2>Third-Party Services</h2>
+      <p>Snippy integrates with cloud storage services at your request:</p>
+      <ul>
+        <li><strong>Google Drive:</strong> Subject to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a></li>
+        <li><strong>Microsoft OneDrive:</strong> Subject to <a href="https://privacy.microsoft.com/privacystatement" target="_blank">Microsoft's Privacy Statement</a></li>
+      </ul>
+      <p>We don't control these services and aren't responsible for their privacy practices.</p>
+
+      <h2>Your Rights and Controls</h2>
+      <ul>
+        <li><strong>Storage choice:</strong> You can change or disable revision storage at any time</li>
+        <li><strong>Data deletion:</strong> Contact us to delete your donor verification data</li>
+        <li><strong>Cloud access:</strong> Revoke cloud storage permissions through your Google/Microsoft account settings</li>
+        <li><strong>Local data:</strong> Clear local storage through your browser settings</li>
+      </ul>
 
       <h2>Changes to This Privacy Policy</h2>
-      <p>If we update this policy, we’ll notify you here. You should review this page once in a while to stay informed.
+      <p>If we update this policy, we'll post the changes here and update the "Last Updated" date. Continued use of Snippy after changes means you accept the updated policy. We'll try not to make changes just for fun.</p>
 
-      <h2>Contact</h2>
-      <p>Have a question? Contact us at <a href="mailto:privacy@snippyforquickbase.com">privacy@snippyforquickbase.com</a>.</p>
+      <h2>Contact Us</h2>
+      <p>Questions, concerns, or philosophical debates about data privacy? Contact us at <a href="mailto:privacy@snippyforquickbase.com">privacy@snippyforquickbase.com</a>. We actually read our email, unlike some companies we could mention.</p>
     </article>
   </main>
 
