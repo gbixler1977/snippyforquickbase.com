@@ -13,6 +13,29 @@
     body {
       font-family: 'Figtree', sans-serif;
     }
+    /* Snippy brand color overrides */
+.snippy-nav-link {
+  color: #64748b; /* Default slate-700 equivalent */
+  transition: color 0.2s ease;
+}
+
+.snippy-nav-link:hover {
+  color: #2c9383; /* Snippy brand color */
+}
+
+.snippy-nav-link.active {
+  color: #2c9383; /* Snippy brand color */
+  font-weight: 700;
+}
+
+.snippy-donate-link {
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.snippy-donate-link:hover {
+  color: #ec4899; /* Keep pink for donate - it stands out */
+}
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -29,16 +52,16 @@
       </a>
 
       <!-- Desktop Menu -->
-      <nav class="hidden md:flex space-x-6">
-        <a href="/" class="hover:text-blue-600">Home</a>
-        <a href="/faq.html" class="hover:text-blue-600">FAQ</a>
-        <a href="/team.html" class="text-blue-600 font-bold">Meet the Team</a>
-        <a href="/guide.html" class="hover:text-blue-600">User Guide</a>
-        <a href="/privacy.html" class="hover:text-blue-600">Privacy Policy</a>
-        <a href="/tos.html" class="hover:text-blue-600">Terms of Service</a>
-        <a href="/feedback.html" class="hover:text-blue-600">Feedback</a>
-        <a href="/index.html#donate" class="hover:text-pink-600">Donate</a>
-      </nav>
+     <nav class="hidden md:flex space-x-6">
+  <a href="/" class="snippy-nav-link">Home</a>
+  <a href="/faq.html" class="snippy-nav-link">FAQ</a>
+  <a href="/team.html" class="snippy-nav-link active">Meet the Team</a>
+  <a href="/guide.html" class="snippy-nav-link">User Guide</a>
+  <a href="/privacy.html" class="snippy-nav-link">Privacy Policy</a>
+  <a href="/tos.html" class="snippy-nav-link">Terms of Service</a>
+  <a href="/feedback.html" class="snippy-nav-link">Feedback</a>
+  <a href="#donate" class="snippy-donate-link">Donate</a>
+</nav>
 
       <!-- Mobile Hamburger -->
       <button id="mobile-menu-button" class="md:hidden focus:outline-none">
@@ -49,16 +72,16 @@
     </div>
 
     <!-- Mobile Menu Links -->
-    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
-      <a href="/" class="block text-slate-700">Home</a>
-      <a href="/faq.html" class="block text-slate-700">FAQ</a>
-      <a href="/team.html" class="block text-blue-600 font-bold">Meet the Team</a>
-      <a href="/guide.html" class="block text-slate-700">User Guide</a>
-      <a href="/privacy.html" class="block text-slate-700">Privacy Policy</a>
-      <a href="/tos.html" class="block text-slate-700">Terms of Service</a>
-      <a href="/feedback.html" class="text-slate-700">Feedback</a>
-      <a href="/index.html#donate" class="block text-pink-600">Donate</a>
-    </div>
+   <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+  <a href="/" class="block snippy-nav-link">Home</a>
+  <a href="/faq.html" class="block snippy-nav-link">FAQ</a>
+  <a href="/team.html" class="block snippy-nav-link active">Meet the Team</a>
+  <a href="/guide.html" class="block snippy-nav-link">User Guide</a>
+  <a href="/privacy.html" class="block snippy-nav-link">Privacy Policy</a>
+  <a href="/tos.html" class="block snippy-nav-link">Terms of Service</a>
+  <a href="/feedback.html" class="block snippy-nav-link">Feedback</a>
+  <a href="#donate" class="block snippy-donate-link">Donate</a>
+</div>
   </header>
 
   <!-- Team Section -->
