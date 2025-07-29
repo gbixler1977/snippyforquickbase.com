@@ -109,41 +109,170 @@
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section id="features" class="py-20 sm:py-28 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-extrabold text-slate-900">Everything you need to code faster</h2>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
-        Snippy is packed with features designed for serious Quickbase developers.
-      </p>
-      <div class="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3 text-left">
-        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Syntax Highlighting</h3>
-                            <p class="mt-2 text-slate-600">Instantly readable formulas and code with beautiful, language-aware color themes (light and dark modes included).</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Auto-Formatting</h3>
-                            <p class="mt-2 text-slate-600">Clean up messy code with a single click. The "Beautify" button intelligently indents and formats your formulas and HTML.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Live Validation</h3>
-                            <p class="mt-2 text-slate-600">See formula errors and warnings in real-time as you type, directly in the editor gutter, just like a modern IDE.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Backup</h3>
-                            <p class="mt-2 text-slate-600">Automatically save a versioned backup of your code to your own Google Drive, Microsoft OneDrive or Local Storage every time you save, so you never lose your work.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Field & Function Helpers</h3>
-                            <p class="mt-2 text-slate-600">Quickly search and insert from a complete, dynamically updated list of all available fields and functions in your table.</p>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-lg">
-                            <h3 class="text-lg font-bold text-slate-900">Modern Editor Experience</h3>
-                            <p class="mt-2 text-slate-600">Enjoy a full-featured CodeMirror editor with line numbers, bracket matching, and a clean, modern interface.</p>
-                        </div>
-      </div>
+  
+
+
+<!-- Snippy Feature Cards with Modal Preview System -->
+<section id="features" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="syntax-highlighting">
+    <h3 class="text-lg font-bold text-slate-900">Syntax Highlighting</h3>
+    <p class="mt-2 text-slate-600">Instantly readable formulas and code with beautiful, language-aware color themes (light and dark modes included).</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="auto-formatting">
+    <h3 class="text-lg font-bold text-slate-900">Auto-Formatting</h3>
+    <p class="mt-2 text-slate-600">Clean up messy code with a single click. The <b>Beautify</b> button intelligently indents and formats your formulas and HTML.</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="live-validation">
+    <h3 class="text-lg font-bold text-slate-900">Live Validation</h3>
+    <p class="mt-2 text-slate-600">See formula errors and warnings in real-time as you type, directly in the editor gutter, just like a modern IDE.</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="backup">
+    <h3 class="text-lg font-bold text-slate-900">Backup</h3>
+    <p class="mt-2 text-slate-600">Automatically save a versioned backup of your code to your own Google Drive, Microsoft OneDrive or Local Storage every time you save, so you never lose your work.</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="field-functions">
+    <h3 class="text-lg font-bold text-slate-900">Field & Function Helpers</h3>
+    <p class="mt-2 text-slate-600">Search and insert fields or functions with smart dropdowns and detailed modals.</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+  <div class="p-6 bg-slate-50 rounded-lg" data-feature="modern-editor">
+    <h3 class="text-lg font-bold text-slate-900">Modern Editor Experience</h3>
+    <p class="mt-2 text-slate-600">Enjoy a full-featured CodeMirror editor with line numbers, bracket matching, and a clean, modern interface.</p>
+    <button class="mt-4 text-sm text-blue-600 hover:underline open-modal">Learn More</button>
+  </div>
+
+</section>
+
+
+<!-- Feature Modal Overlay -->
+<div id="feature-modal" class="fixed inset-0 hidden items-center justify-center z-50">
+  <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+  <div class="relative bg-white rounded-lg max-w-4xl w-full mx-4 sm:mx-8 p-6 z-10 shadow-lg">
+    <button id="modal-close" class="absolute top-4 right-4 text-2xl text-gray-500 hover:text-gray-800">&times;</button>
+    <h3 id="modal-title" class="text-xl font-semibold text-slate-900 mb-4"></h3>
+    <div id="modal-carousel" class="flex justify-center">
+      <!-- Dynamically inserted images go here -->
     </div>
-  </section>
+    <p id="modal-caption" class="mt-4 text-slate-700"></p>
+    <div class="mt-4 flex justify-between">
+      <button id="prev-img" class="text-sm text-blue-600 hover:underline">&larr; Previous</button>
+      <button id="next-img" class="text-sm text-blue-600 hover:underline">Next &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const featureDetails = {
+  "syntax-highlighting": {
+    title: "Syntax Highlighting",
+    caption: "Instantly readable formulas and code with beautiful, language-aware color themes (light and dark modes included).",
+    images: [
+      { src: "syntax-highlighting-light.png", alt: "Syntax highlighting - light" },
+      { src: "syntax-highlighting-dark.png", alt: "Syntax highlighting - dark" }      
+    ]
+  },
+  "auto-formatting": {
+    title: "Auto-Formatting",
+    caption: "Clean up messy code with a single click. The Beautify button intelligently indents and formats your formulas and HTML.",
+    images: [
+      { src: "beautified.png", alt: "Beautified code" }     
+    ]
+  },
+  "live-validation": {
+    title: "Live Validation",
+    caption: "See formula errors and warnings in real-time as you type, directly in the editor gutter, just like a modern IDE.",
+    images: [
+      { src: "code-page-validation.png", alt: "Code Page Validation" },
+      { src: "formula-validation.png", alt: "Formula Validation" }     
+    ]
+  },
+  "backup": {
+    title: "Backup",
+    caption: "Automatically save a versioned backup of your code to your own Google Drive, Microsoft OneDrive or Local Storage every time you save, so you never lose your work.",
+    images: [
+      { src: "backup-options.png", alt: "Storage Options" },
+      { src: "backup-revisions.png", alt: "Revision History" }     
+    ]
+  },
+  "field-functions": {
+    title: "Field & Function Helpers",
+    caption: "Search and insert fields or functions with smart dropdowns and detailed modals.",
+    images: [
+      { src: "field-modal.png", alt: "Field helper dropdown" },
+      { src: "functions-modal.png", alt: "Function helper modal" },
+      { src: "helper-dropdown.png", alt: "Auto-suggest field search" }
+    ]
+  },
+  "modern-editor": {
+    title: "Modern Editor Experience",
+    caption: "Enjoy a full-featured CodeMirror editor with line numbers, bracket matching, and a clean, modern interface.",
+    images: [
+      { src: "bracket-matching.png", alt: "Bracket Matching" }      
+    ]
+  }
+  // Add additional features here:
+  // "syntax-highlighting": { title: ..., caption: ..., images: [...] },
+};
+
+const modal = document.getElementById('feature-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalCaption = document.getElementById('modal-caption');
+const modalCarousel = document.getElementById('modal-carousel');
+let currentFeature = null;
+let currentIndex = 0;
+
+function updateModal() {
+  if (!currentFeature) return;
+  const { title, caption, images } = featureDetails[currentFeature];
+  modalTitle.textContent = title;
+  modalCaption.textContent = caption;
+
+  modalCarousel.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = images[currentIndex].src;
+  img.alt = images[currentIndex].alt;
+  img.className = "rounded-lg border border-gray-200 max-h-[500px] object-contain";
+  modalCarousel.appendChild(img);
+}
+
+document.querySelectorAll('.open-modal').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const card = e.target.closest('[data-feature]');
+    currentFeature = card.dataset.feature;
+    currentIndex = 0;
+    updateModal();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  });
+});
+
+document.getElementById('modal-close').addEventListener('click', () => {
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+});
+
+document.getElementById('prev-img').addEventListener('click', () => {
+  const images = featureDetails[currentFeature].images;
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateModal();
+});
+
+document.getElementById('next-img').addEventListener('click', () => {
+  const images = featureDetails[currentFeature].images;
+  currentIndex = (currentIndex + 1) % images.length;
+  updateModal();
+});
+</script>
 
  
 
