@@ -17,29 +17,6 @@
       color: #2563eb;
       font-weight: 700;
     }
-    /* Snippy brand color overrides */
-.snippy-nav-link {
-  color: #64748b; /* Default slate-700 equivalent */
-  transition: color 0.2s ease;
-}
-
-.snippy-nav-link:hover {
-  color: #2c9383; /* Snippy brand color */
-}
-
-.snippy-nav-link.active {
-  color: #2c9383; /* Snippy brand color */
-  font-weight: 700;
-}
-
-.snippy-donate-link {
-  color: #64748b;
-  transition: color 0.2s ease;
-}
-
-.snippy-donate-link:hover {
-  color: #ec4899; /* Keep pink for donate - it stands out */
-}
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -56,16 +33,15 @@
       </a>
 
       <!-- Desktop Menu -->
-     <nav class="hidden md:flex space-x-6">
-  <a href="/" class="snippy-nav-link active">Home</a>
-  <a href="/faq.html" class="snippy-nav-link">FAQ</a>
-  <a href="/team.html" class="snippy-nav-link">Meet the Team</a>
-  <a href="/guide.html" class="snippy-nav-link">User Guide</a>
-  <a href="/privacy.html" class="snippy-nav-link">Privacy Policy</a>
-  <a href="/tos.html" class="snippy-nav-link">Terms of Service</a>
-  <a href="/feedback.html" class="snippy-nav-link">Feedback</a>
-  <a href="#donate" class="snippy-donate-link">Donate</a>
-</nav>
+      <nav class="hidden md:flex space-x-6">
+        <a href="/" class="hover:text-blue-600">Home</a>
+        <a href="/faq.html" class="hover:text-blue-600">FAQ</a>
+        <a href="/team.html" class="hover:text-blue-600">Meet the Team</a>
+        <a href="/privacy.html" class="hover:text-blue-600">Privacy Policy</a>
+        <a href="/tos.html" class="hover:text-blue-600">Terms of Service</a>
+        <a href="/feedback.html" class="hover:text-blue-600">Feedback</a>
+        <a href="#donate" class="hover:text-pink-600">Donate</a>
+      </nav>
 
       <!-- Mobile Hamburger -->
       <button id="mobile-menu-button" class="md:hidden focus:outline-none">
@@ -76,22 +52,21 @@
     </div>
 
     <!-- Mobile Menu Links -->
- <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
-  <a href="/" class="block snippy-nav-link active">Home</a>
-  <a href="/faq.html" class="block snippy-nav-link">FAQ</a>
-  <a href="/team.html" class="block snippy-nav-link">Meet the Team</a>
-  <a href="/guide.html" class="block snippy-nav-link">User Guide</a>
-  <a href="/privacy.html" class="block snippy-nav-link">Privacy Policy</a>
-  <a href="/tos.html" class="block snippy-nav-link">Terms of Service</a>
-  <a href="/feedback.html" class="block snippy-nav-link">Feedback</a>
-  <a href="#donate" class="block snippy-donate-link">Donate</a>
-</div>
+    <div id="mobile-menu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="/" class="block text-slate-700">Home</a>
+      <a href="/faq.html" class="block text-slate-700">FAQ</a>
+      <a href="/team.html" class="block text-slate-700">Meet the Team</a>
+      <a href="/privacy.html" class="block text-slate-700">Privacy Policy</a>
+      <a href="/tos.html" class="block text-slate-700">Terms of Service</a>
+      <a href="/feedback.html" class="text-slate-700">Feedback</a>
+      <a href="#donate" class="block text-pink-600">Donate</a>
+    </div>
   </header>
 
   <!-- Hero Section -->
   <section class="py-20 sm:py-28 text-center">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl text-slate-900 font-extrabold tracking-tight">Introducing Snippy Code Enhancer</h1>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl text-slate-900 font-extrabold tracking-tight">Intoducing Snippy Code Enhancer</h1>
      <h3 class="text-2xl sm:text-3xl lg:text-4xl text-slate-600 font-medium tracking-tight">
         The code and formula editor for Quickbase you've always wanted.
       </h3>
@@ -99,7 +74,7 @@
         Supercharge your Quickbase formulas and code pages with syntax highlighting, themes, auto-formatting, version control, and more.
       </p>
       <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-        <a href="https://chrome.google.com/webstore/detail/snippy-code-enhancer/hnpgghnicnckmmgjjbbceebbbhplnbca" class="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow text-base font-medium" target="_blank">
+        <a href="#" class="px-6 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow text-base font-medium">
           Get Snippy for Chrome
         </a>
         <a href="#features" class="px-6 py-3 text-slate-700 bg-white hover:bg-slate-50 border border-slate-300 rounded-md shadow text-base font-medium">
@@ -109,8 +84,15 @@
     </div>
   </section>
 
-  
-
+  <!-- Features Section -->
+  <section id="features" class="py-20 sm:py-28 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-slate-900">Everything you need to code faster</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
+        Snippy is packed with features designed for serious Quickbase developers.
+      </p>
+      <div class="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-3 text-left">
+        
 
 <!-- Snippy Feature Cards with Modal Preview System -->
 <section id="features" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
@@ -274,7 +256,25 @@ document.getElementById('next-img').addEventListener('click', () => {
 });
 </script>
 
- 
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="py-20 sm:py-28">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-extrabold text-slate-900">See Snippy in Action</h2>
+      <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">
+        A powerful, modern editor that integrates seamlessly with Quickbase.
+      </p>
+      <div class="mt-16 flex justify-center">
+        <video autoplay muted loop playsinline class="rounded-lg shadow-xl max-w-full h-auto border border-slate-200">
+          <source src="/snippy-demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
 
   <!-- Donation Section -->
   <section id="donate" class="py-20 sm:py-28 bg-white">
